@@ -1,7 +1,7 @@
 PyCompressor
 ======================
 
-PyCompressor collect all css and js references in html files, merge and compress then, puting all static files in an specific bucket, filtering all js,css and images references in html to bucket url.
+PyCompressor collect all css and js references in html files, merge and compress then, puting all static files in an specific bucket, filtering all js,css and images references in html to apply your bucket url.
 
 Installation
 -----------------
@@ -10,6 +10,8 @@ Installing: `pip install pycompressor`
 
 Usage
 =======
+
+    pycompressor -f pycompressor.yaml
 
 
 Requirements
