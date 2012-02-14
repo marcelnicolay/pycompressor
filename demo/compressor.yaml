@@ -11,7 +11,7 @@ output:
 pattern:
   css: '^/media/css/(?P<file>.*)$'
   js: '^/media/js/(?P<file>((?!jquery\-1\.7\.1\.min\.js).)*)$'
-  img: '^/media/img'
+  img: '/media/img'
 
 filter:
   url: 

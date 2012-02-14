@@ -36,5 +36,5 @@ class Filter(object):
         self.filter_tags()
         
         self.template.content = self.filter_images(self.template.content)
-        self.template.js_minified = self.filter_images(self.template.js_minified)
-        self.template.css_minified = self.filter_images(self.template.css_minified)
+        self.template.js = self.filter_images(self.template.js)
+        self.template.css = self.filter_images(self.template.css)

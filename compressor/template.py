@@ -2,6 +2,8 @@ from compressor.minifier.js import jsmin
 from compressor.minifier.css import minimalize
 from compressor.filter import Filter
 
+from subprocess import call
+
 import os
 import re
 
@@ -70,7 +72,7 @@ class Template(object):
         
         return links
 
-    def compress_scripts(self):
+    def get_merged_scripts(self):
         scripts = self.get_scripts()
         
         scripts_content = []
@@ -84,9 +86,9 @@ class Template(object):
             except IOError, io:
                 self.cli.msg("[FAIL]\t"+script_path, "RED")
         
-        return jsmin("".join(scripts_content))
+        return "".join(scripts_content)
         
-    def compress_links(self):
+    def get_merged_links(self):
         links = self.get_links()
 
         links_content = []
@@ -100,22 +102,31 @@ class Template(object):
             except IOError, io:
                 self.cli.msg("[FAIL]\t"+link_path, "RED")
 
-        return minimalize("".join(links_content))
+        return "".join(links_content)
+        
+    def compress_js(self):
+        if self.js:
+            js_path = os.path.join(self.config['output']['js'], self.js_name)
+            self.write(js_path, self.js)
+            call(("yuicompressor", "-o "+js_path, js_path))
+        
+    def compress_css(self):
+        if self.css:
+            css_path = os.path.join(self.config['output']['css'], self.css_name)
+            self.write(css_path, self.css)
+            call(("yuicompressor", "-o " +css_path, css_path))
         
     def compress(self):
         # get compressed files
-        self.js_minified = self.compress_scripts()
-        self.css_minified = self.compress_links()
+        self.js = self.get_merged_scripts()
+        self.css = self.get_merged_links()
         
         # filter content
         compressor_filter = Filter(self.config, self)
         compressor_filter.apply()
         
-        # write files
-        if self.js_minified:
-            self.write(os.path.join(self.config['output']['js'], self.js_name), self.js_minified)
-            
-        if self.css_minified:
-            self.write(os.path.join(self.config['output']['css'], self.css_name), self.css_minified)
-
+        # save
+        self.compress_js()
+        self.compress_css()
+        
         self.write(os.path.join(self.config['output']['template'], self.template_path), self.content)
