@@ -41,6 +41,13 @@ compressor.yaml
         js: http://demo.pycompressor.com/media/js
         img: http://demo.pycompressor.com/media/img
 
+Requirements
+------------
+The following python libraries are required
+
+* PyYAML
+
+
 Issues
 ------
 

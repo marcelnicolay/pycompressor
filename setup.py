@@ -35,7 +35,7 @@ setup(
                    'Programming Language :: Python :: 2.6',
                    'Topic :: Software Development :: Libraries :: Application Frameworks',
                    ],
-    requires=[],
+    requires=['PyYAML'],
     packages = find_packages(),
     package_dir = {"compressor": "compressor"},
     include_package_data = True,
