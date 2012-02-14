@@ -13,6 +13,29 @@ Usage
 
     compressor -c compressor.yaml
 
+Config Example
+===============
+
+    path:
+      template: template
+      css: media/css
+      js: media/js
+
+    output:
+      template: compressor/template
+      css: compressor/media/css
+      js: compressor/media/js
+
+    pattern:
+      css: ../media/css
+      js: ../media/js
+      img: ../media/img
+
+    filter:
+      url: 
+        css: http://demo.pycompressor.com/media/css
+        js: http://demo.pycompressor.com/media/js
+        img: http://demo.pycompressor.com/media/img
 
 Requirements
 ------------
