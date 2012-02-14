@@ -16,13 +16,13 @@ Usage
 compressor.yaml
 -----------------
 
-    # path to your files
+    # your files path
     path:
       template: template
       css: media/css
       js: media/js
      
-    # output paths for compressor result
+    # compressor results path
     output:
       template: compressor/template
       css: compressor/media/css
