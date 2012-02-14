@@ -1,0 +1,10 @@
+*.pyc
+dist/*
+build/*
+*.pydevproject
+*.project
+*.settings*.pyc
+*.settings
+pycompressor.egg-info/*
+.idea/
+.coverage

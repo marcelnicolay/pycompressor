@@ -39,5 +39,11 @@ setup(
     packages = find_packages(),
     package_dir = {"pycompressor": "pycompressor"},
     include_package_data = True,
-    test_suite="nose.collector"
+    test_suite="nose.collector",
+    entry_points = {
+        'console_scripts': [
+            'pycompressor = pycompressor.runner:run',
+        ],
+    },
+    
 )

@@ -46,4 +46,4 @@ class CssMinifier:
 
 def minimalize(css, level=NORMAL):
   """Compress css using level method and return new css as a string."""
-  return CssMin(level).minify(css)
+  return CssMinifier(level).minify(css)
