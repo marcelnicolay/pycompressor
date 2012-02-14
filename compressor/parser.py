@@ -1,5 +1,5 @@
 # encoding: utf-8
-from pycompressor.template import Template
+from compressor.template import Template
 
 import os
 import yaml
@@ -18,7 +18,7 @@ class CompressorParser(object):
     
     def parse(self):
         
-        self.cli.msg("PyCompressor running, looking for templates...")
+        self.cli.msg("Compressor running, looking for templates...")
 
         self.listdir(self.config.get('path').get('template'))
     

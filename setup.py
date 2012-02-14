@@ -13,14 +13,14 @@
 # limitations under the License.
 
 from setuptools import setup, find_packages
-from pycompressor import __version__
+from compressor import __version__
 
 setup(
-    name = 'pycompressor',
+    name = 'compressor',
     version = __version__,
-    description = "pycompressor",
-    long_description = """pycompressor""",
-    keywords = ['pycompressor'],
+    description = "compressor",
+    long_description = """compressor""",
+    keywords = ['compressor'],
     author = 'Marcel Nicolay',
     author_email = 'marcel.nicolay@gmail.com',
     url = 'http://github.com/marcelnicolay/pycompressor',
@@ -37,12 +37,12 @@ setup(
                    ],
     requires=[],
     packages = find_packages(),
-    package_dir = {"pycompressor": "pycompressor"},
+    package_dir = {"compressor": "compressor"},
     include_package_data = True,
     test_suite="nose.collector",
     entry_points = {
         'console_scripts': [
-            'pycompressor = pycompressor.runner:run',
+            'compressor = compressor.runner:run',
         ],
     },
     

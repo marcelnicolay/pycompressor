@@ -1,0 +1,3 @@
+[console_scripts]
+compressor = compressor.runner:run
+

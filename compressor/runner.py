@@ -1,6 +1,6 @@
 from getpass import getpass
-from pycompressor.cli import CLI
-from pycompressor.parser import CompressorParser
+from compressor.cli import CLI
+from compressor.parser import CompressorParser
 
 import codecs
 import sys
@@ -16,8 +16,8 @@ def run():
     try:
         (options, args) = cli.parse()
 
-        if options.pycompressor_version:
-            msg = 'pycompressor v%s' % pycompressor.__version__
+        if options.compressor_version:
+            msg = 'compressor v%s' % pycompressor.__version__
             cli.info_and_exit(msg)
 
         if options.show_colors:

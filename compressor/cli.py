@@ -33,14 +33,14 @@ class CLI(object):
 
         self.__parser.add_option("-c", "--config",
                 dest="config_file",
-                default="pycompressor.yaml",
-                help="Use a specific config file. If not provided, will search for 'pycompressor.yaml' in the current directory.")
+                default="compressor.yaml",
+                help="Use a specific config file. If not provided, will search for 'compressor.yaml' in the current directory.")
 
         self.__parser.add_option("-v", "--version",
                 action="store_true",
-                dest="pycompressor_version",
+                dest="compressor_version",
                 default=False,
-                help="Displays pycompressor version and exit.")
+                help="Displays compressor version and exit.")
 
         self.__parser.add_option("--color",
                 action="store_true",

@@ -1,5 +1,5 @@
-from pycompressor.minifier.js import jsmin
-from pycompressor.minifier.css import minimalize
+from compressor.minifier.js import jsmin
+from compressor.minifier.css import minimalize
 import os
 import re
 

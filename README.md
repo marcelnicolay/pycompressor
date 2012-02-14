@@ -6,12 +6,12 @@ PyCompressor collect all css and js references in html files, merge and compress
 Installation
 -----------------
 
-Installing: `pip install pycompressor`
+Installing: `pip install compressor`
 
 Usage
 =======
 
-    pycompressor -f pycompressor.yaml
+    compressor -c compressor.yaml
 
 
 Requirements

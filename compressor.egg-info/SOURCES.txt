@@ -1,0 +1,14 @@
+setup.py
+compressor/__init__.py
+compressor/cli.py
+compressor/parser.py
+compressor/runner.py
+compressor/template.py
+compressor.egg-info/PKG-INFO
+compressor.egg-info/SOURCES.txt
+compressor.egg-info/dependency_links.txt
+compressor.egg-info/entry_points.txt
+compressor.egg-info/top_level.txt
+compressor/minifier/__init__.py
+compressor/minifier/css.py
+compressor/minifier/js.py

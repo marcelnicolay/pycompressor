@@ -5,6 +5,6 @@ build/*
 *.project
 *.settings*.pyc
 *.settings
-pycompressor.egg-info/*
+compressor.egg-info/*
 .idea/
 .coverage
