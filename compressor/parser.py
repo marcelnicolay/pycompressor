@@ -37,4 +37,4 @@ class CompressorParser(object):
         self.cli.msg(filename, color='GREEN')
         
         template = Template(filename, self.config, self.cli)
-        template.filter()
+        template.compress()

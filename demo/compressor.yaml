@@ -9,9 +9,9 @@ output:
   js: compressor/media/js
 
 pattern:
-  css: ../media/css
-  js: ../media/js
-  img: ../media/img
+  css: /media/css
+  js: /media/js
+  img:  /media/img
 
 filter:
   url: 

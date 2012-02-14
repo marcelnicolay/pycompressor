@@ -4,9 +4,7 @@ from compressor.parser import CompressorParser
 
 import codecs
 import sys
-import pycompressor
 import traceback
-
 
 # fixing print in non-utf8 terminals
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
