@@ -39,14 +39,23 @@ class Template(object):
         finally:
             f.close()
             
+    def search_file_path(self, pattern, content):
+        
+        match = re.search(pattern, content)
+        if match:
+            return match.groupdict().get('file')
+        
+        return None
+        
     def get_scripts(self):
         scripts = []
         
         for script in re.findall('\<script[^>]*></script>',self.content):
             search = re.search('src="(?P<value>[^"]*)"', script)
-            if search and self.config.get('pattern').get('js') in search.groupdict()['value']:
-                src = search.groupdict()['value'].replace(self.config['pattern']['js'] + '/', '')
-                scripts.append((src, script))
+            if search:
+                file_path = self.search_file_path(self.config['pattern']['js'], search.groupdict()['value'])
+                if file_path:
+                    scripts.append((file_path, script))
         
         return scripts
         
@@ -55,9 +64,9 @@ class Template(object):
         
         for link in re.findall('\<link[^>]*/>',self.content):
             search = re.search('href="(?P<value>[^"]*)"', link)	
-            if search and self.config.get('pattern').get('css') in search.groupdict()['value']:
-                src = search.groupdict()['value'].replace(self.config['pattern']['css'] + '/', '')
-                links.append((src, link))
+            file_path = self.search_file_path(self.config['pattern']['css'], search.groupdict()['value'])
+            if file_path:
+                links.append((file_path, link))
         
         return links
 
