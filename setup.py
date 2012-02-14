@@ -19,7 +19,7 @@ setup(
     name = 'compressor',
     version = __version__,
     description = "compressor",
-    long_description = """compressor""",
+    long_description = open('README.md').read(),
     keywords = ['compressor'],
     author = 'Marcel Nicolay',
     author_email = 'marcel.nicolay@gmail.com',
