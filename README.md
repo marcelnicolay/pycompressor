@@ -16,21 +16,25 @@ Usage
 compressor.yaml
 -----------------
 
+    # path to your files
     path:
       template: template
       css: media/css
       js: media/js
-
+     
+    # output paths for compressor result
     output:
       template: compressor/template
       css: compressor/media/css
       js: compressor/media/js
 
+    # pattern to find tags in html code
     pattern:
       css: ../media/css
       js: ../media/js
       img: ../media/img
 
+    # filter url tags
     filter:
       url: 
         css: http://demo.pycompressor.com/media/css
