@@ -2,10 +2,12 @@ from compressor.minifier.js import jsmin
 from compressor.minifier.css import minimalize
 from compressor.filter import Filter
 
-from subprocess import call
+from subprocess import Popen, PIPE, STDOUT
 
+import shlex
 import os
 import re
+import traceback
 
 class Template(object):
     
@@ -22,6 +24,8 @@ class Template(object):
         self.css_name = template_filename+".min.css"
         
         self.content = self.read(template_path)
+        
+        self.cli.msg(template_path)
         
     def read(self, file_path):
         
@@ -82,9 +86,9 @@ class Template(object):
             
             try:
                 scripts_content.append(self.read(script_path))
-                self.cli.msg("[OK]\t"+script_path)
+                self.cli.msg("\t[OK]\t"+script_path, "GREEN")
             except IOError, io:
-                self.cli.msg("[FAIL]\t"+script_path, "RED")
+                self.cli.msg("\t[FAIL]\t"+script_path, "RED")
         
         return "".join(scripts_content)
         
@@ -98,26 +102,37 @@ class Template(object):
             
             try:
                 links_content.append(self.read(link_path))
-                self.cli.msg("[OK]\t"+link_path)
+                self.cli.msg("\t[OK]\t"+link_path, "GREEN")
             except IOError, io:
-                self.cli.msg("[FAIL]\t"+link_path, "RED")
+                self.cli.msg("\t[FAIL]\t"+link_path, "RED")
 
         return "".join(links_content)
         
+    def yuicompressor(self, file_path):
+        process = Popen(['yuicompressor', '-o', file_path, file_path], stdout=PIPE, stderr=PIPE)
+        stdout, stderr = process.communicate()
+        
+        if not stderr:
+            self.cli.msg("\t[OK] "+file_path, "GREEN")
+        else:
+            self.cli.msg("\t[FAIL] "+file_path, "RED")
+            self.cli.error_and_exit(stderr)
+    
     def compress_js(self):
         if self.js:
-            js_path = os.path.join(self.config['output']['js'], self.js_name)
+            js_path = os.path.join(self.config['output']['js'], self.js_name)            
             self.write(js_path, self.js)
-            call(("yuicompressor", "-o "+js_path, js_path))
+            self.yuicompressor(js_path)
         
     def compress_css(self):
         if self.css:
             css_path = os.path.join(self.config['output']['css'], self.css_name)
             self.write(css_path, self.css)
-            call(("yuicompressor", "-o " +css_path, css_path))
-        
+            self.yuicompressor(css_path)
+            
     def compress(self):
         # get compressed files
+        self.cli.msg("\tmerging...")
         self.js = self.get_merged_scripts()
         self.css = self.get_merged_links()
         
@@ -126,6 +141,7 @@ class Template(object):
         compressor_filter.apply()
         
         # save
+        self.cli.msg("\tcompress...")
         self.compress_js()
         self.compress_css()
         

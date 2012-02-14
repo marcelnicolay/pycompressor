@@ -34,7 +34,5 @@ class CompressorParser(object):
                     self.parse_file(file_path)
     
     def parse_file(self, filename):
-        self.cli.msg(filename, color='GREEN')
-        
         template = Template(filename, self.config, self.cli)
         template.compress()
