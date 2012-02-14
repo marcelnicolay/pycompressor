@@ -13,8 +13,8 @@ Usage
 
     compressor -c compressor.yaml
 
-Config Example
-===============
+compressor.yaml
+-----------------
 
     path:
       template: template
@@ -36,11 +36,6 @@ Config Example
         css: http://demo.pycompressor.com/media/css
         js: http://demo.pycompressor.com/media/js
         img: http://demo.pycompressor.com/media/img
-
-Requirements
-------------
-The following three python libraries are required
-
 
 Issues
 ------
