@@ -3,7 +3,8 @@ import boto
 
 class BucketSync(object):
     
-    def __init__(self, cli, key, secret, bucket_name, local_path, bucket_base_path='/', grant='public-read', endpoint='s3.amazonaws.com'):
+    def __init__(self, cli, key, secret, bucket_name, 
+        local_path, bucket_base_path='/', grant='public-read', endpoint='s3.amazonaws.com'):
         
         self.cli = cli
         self.key = key
