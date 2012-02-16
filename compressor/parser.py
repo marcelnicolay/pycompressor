@@ -21,6 +21,20 @@ class CompressorParser(object):
         self.cli.msg("Compressor running, looking for templates...")
 
         self.listdir(self.config.get('path').get('template'))
+        
+        (options, args) = self.cli.parse()
+        if options.sync:
+            from compressor.bucket import BucketSync
+            bucket = BucketSync(
+                self.cli, 
+                self.config['sync']['aws_access_key'], 
+                self.config['sync']['aws_secret_key'], 
+                self.config['sync']['bucket_name'], 
+                self.config['sync']['path'], 
+                self.config['sync']['bucket_base_path']
+            )
+            bucket.sync()
+            
     
     def listdir(self, path):
         dirlist = os.listdir(path)

@@ -18,3 +18,10 @@ filter:
     css: http://demo.pycompressor.com/media/css
     js: http://demo.pycompressor.globoi.com/media/js
     img: http://demo.pycompressor.globoi.com/media/img
+    
+sync:
+  aws_access_key: 
+  aws_secret_key: 
+  bucket_name: compressor
+  bucket_base_path: /compressor/media
+  path: compressor/media

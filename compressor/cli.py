@@ -35,7 +35,11 @@ class CLI(object):
                 dest="config_file",
                 default="compressor.yaml",
                 help="Use a specific config file. If not provided, will search for 'compressor.yaml' in the current directory.")
-
+        self.__parser.add_option("-s", "--sync",
+                dest="sync",
+                action="store_true",
+                default=False,
+                help="Sync files with S3")
         self.__parser.add_option("-v", "--version",
                 action="store_true",
                 dest="compressor_version",

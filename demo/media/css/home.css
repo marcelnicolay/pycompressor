@@ -6,3 +6,6 @@ body{
 img{
 	background:url("/media/img/compressor.jpg");
 }
+body img{
+	background:url("/media/img/compressor.jpg");
+}
