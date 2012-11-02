@@ -3,6 +3,7 @@ from compressor.filter import Filter
 from subprocess import Popen, PIPE
 import os
 import re
+import time
 
 
 class Template(object):
@@ -123,12 +124,14 @@ class Template(object):
         if self.js:
             js_path = os.path.join(self.config['output']['js'], self.js_name)
             self.write(js_path, self.js)
+            time.sleep(1)
             self.uglifyjs(js_path)
 
     def compress_css(self):
         if self.css:
             css_path = os.path.join(self.config['output']['css'], self.css_name)
             self.write(css_path, self.css)
+            time.sleep(1)
             self.cleancss(css_path)
 
     def compress(self):
