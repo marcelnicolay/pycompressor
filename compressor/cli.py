@@ -52,6 +52,11 @@ class CLI(object):
                 default=False,
                 help="Output with beautiful colors.")
 
+        self.__parser.add_option("-s", "--suffix",
+                dest="suffix",
+                default="min",
+                help="Use suffix in output js and css.")
+
     def get_parser(self):
         return self.__parser
 
