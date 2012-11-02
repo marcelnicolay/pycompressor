@@ -108,8 +108,8 @@ class Template(object):
         self._run_process(process, file_path)
 
     def uglifyjs(self, file_path):
-        process = Popen(['uglifyjs', '--lift-vars', '--unsafe',
-            '-o', file_path, file_path], stdout=PIPE, stderr=PIPE)
+        process = Popen(['uglifyjs2', '-o', file_path, file_path],
+            stdout=PIPE, stderr=PIPE)
         self._run_process(process, file_path)
 
     def cleancss(self, file_path):
