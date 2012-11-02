@@ -16,8 +16,8 @@ class Template(object):
         template_filename = os.path.splitext(os.path.basename(self.template_path))[0]
 
         (options, args) = self.cli.parse()
-        self.js_name = "{}.{}.{}".format(template_filename, options.suffix, "js")
-        self.css_name = "{}.{}.{}".format(template_filename, options.suffix, "css")
+        self.js_name = "{}{}.{}".format(options.prefix, template_filename, "js")
+        self.css_name = "{}{}.{}".format(options.prefix, template_filename, "css")
 
         self.content = self.read(template_path)
 
