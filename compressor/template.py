@@ -14,8 +14,10 @@ class Template(object):
         self.template_path = template_path.replace(self.config['path']['template'] + "/", "")
 
         template_filename = os.path.splitext(os.path.basename(self.template_path))[0]
-        self.js_name = template_filename + ".min.js"
-        self.css_name = template_filename + ".min.css"
+
+        suffix = self.config['output'].get('suffix', '')
+        self.js_name = template_filename + suffix + ".min.js"
+        self.css_name = template_filename + suffix + ".min.css"
 
         self.content = self.read(template_path)
 
