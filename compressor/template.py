@@ -76,7 +76,7 @@ class Template(object):
 
     def get_links(self):
         links = []
-        for link in re.findall('\<link[^>]*/>', self.content):
+        for link in re.findall('\<link[^>]*/?>', self.content):
             search = re.search('href="(?P<value>[^"]*)"', link)
             file_path = self.search_file_path(self.config['pattern']['css'], search.groupdict()['value'])
             if file_path:
